@@ -1,0 +1,13 @@
+[package]
+name = "edge-benchmark"
+version = "0.1.0"
+edition = "2021"
+description = "Benchmarking primitives for edge runtimes (Cloudflare Workers compatible)"
+license = "MIT"
+repository = "https://github.com/SuperInstance/edge-benchmark"
+
+[features]
+default = ["std"]
+std = []
+
+[dependencies]
