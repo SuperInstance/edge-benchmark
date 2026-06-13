@@ -78,6 +78,10 @@ Edge Benchmark provides the **edge-runtime performance monitoring** for γ + η 
 
 See [ARCHITECTURE.md](https://github.com/SuperInstance/SuperInstance/blob/main/ARCHITECTURE.md).
 
+**Warm-up rationale in edge contexts:** On Cloudflare Workers, the V8 isolate's JIT compiler reaches peak performance after ~100 iterations of a function. Running fewer than 100 warm-up iterations measures JIT-warmup overhead rather than steady-state performance. The `run_with_warmup` function addresses this by executing the closure 10–100 times before measurement, allowing the JIT to optimize the hot paths.
+
+**Percentile accuracy:** For n = 100 samples, the p95 index is 94.5 (rounded to 95). The granularity of percentile estimates is limited by sample count: with n = 100, percentiles are quantized to 1% steps. For sub-percentile precision (e.g., p99.9), at least 1000 samples are needed.
+
 ## References
 
 1. Welch, B.L. (1947). "The Generalization of 'Student's' Problem." *Biometrika*, 34(1/2), 28–35.
